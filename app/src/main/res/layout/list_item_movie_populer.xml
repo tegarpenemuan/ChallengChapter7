@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/color_bg"
+    android:padding="5dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_poster"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_poster"
+                android:layout_width="300dp"
+                android:layout_height="350dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintDimensionRatio="3:4" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_title_movie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="Spiderman No Way Home"
+        android:textAlignment="center"
+        android:textColor="@color/color_font"
+        android:textSize="16sp"
+        android:maxLength="21"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/cv_poster"
+        app:layout_constraintStart_toStartOf="@id/cv_poster"
+        app:layout_constraintTop_toBottomOf="@id/cv_poster" />
+
+    <RatingBar
+        android:id="@+id/rating"
+        style='@android:style/Widget.Material.RatingBar.Small'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="4dp"
+        android:progressTint="#FBC02D"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@id/tv_title_movie"
+        app:layout_constraintStart_toStartOf="@id/tv_title_movie"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_movie" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
