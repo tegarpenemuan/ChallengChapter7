@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tegarpenemuan.challengchapter6.databinding.ListItemHomeCategoryBinding
-import com.tegarpenemuan.challengchapter6.movie.ListGenreModel
+import com.tegarpenemuan.challengchapter6.model.ListGenreModel
 
 class ListGenreAdapter(private var list: List<ListGenreModel>) :
     RecyclerView.Adapter<ListGenreAdapter.ViewHolder>() {

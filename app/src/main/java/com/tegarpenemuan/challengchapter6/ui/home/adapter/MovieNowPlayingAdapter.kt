@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.tegarpenemuan.challengchapter6.databinding.ListItemMovieNowPlayingBinding
 import com.tegarpenemuan.challengechapter5.model.movie.MoviePopulerModel
 
-class MovieNowPlayingAdapter(private var list: List<MoviePopulerModel>) :
+class MovieNowPlayingAdapter(private val listener: EventListener, private var list: List<MoviePopulerModel>) :
     RecyclerView.Adapter<MovieNowPlayingAdapter.ViewHolder>() {
     inner class ViewHolder(val binding: ListItemMovieNowPlayingBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -37,10 +37,17 @@ class MovieNowPlayingAdapter(private var list: List<MoviePopulerModel>) :
         holder.binding.rating.numStars = 5
 
         holder.binding.tvOverview.text = item.overview
+
+        holder.itemView.setOnClickListener {
+            listener.onClick(item)
+        }
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
 
+    interface EventListener {
+        fun onClick(item: MoviePopulerModel)
+    }
 }

@@ -48,12 +48,22 @@ tools:context=".ui.home.HomeFragment">
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/tv_inisial"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_button"
+                android:gravity="center"
+                android:text="TP"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:src="@drawable/binarlogo" />
+                android:scaleType="centerCrop"/>
 
         </RelativeLayout>
 

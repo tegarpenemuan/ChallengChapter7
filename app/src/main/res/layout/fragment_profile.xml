@@ -78,13 +78,23 @@ tools:context=".ui.profile.ProfileFragment">
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/tv_inisial"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/purple_700"
+                    android:gravity="center"
+                    android:text="TP"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
+
                 <ImageView
                     android:id="@+id/iv_profile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/binarlogo" />
+                    android:scaleType="centerCrop"/>
 
             </RelativeLayout>
 

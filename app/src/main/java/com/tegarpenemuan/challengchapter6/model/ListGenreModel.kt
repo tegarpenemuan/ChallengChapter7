@@ -1,4 +1,4 @@
-package com.tegarpenemuan.challengchapter6.movie
+package com.tegarpenemuan.challengchapter6.model
 
 data class ListGenreModel(
     val id: Int,

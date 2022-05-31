@@ -3,7 +3,8 @@ package com.tegarpenemuan.challengchapter6.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tegarpenemuan.challengchapter6.database.MyDatabase
-import com.tegarpenemuan.challengchapter6.movie.ListGenreModel
+import com.tegarpenemuan.challengchapter6.model.ListGenreModel
+import com.tegarpenemuan.challengchapter6.model.UserModel
 import com.tegarpenemuan.challengchapter6.network.TMDBApiClient
 import com.tegarpenemuan.challengechapter5.model.movie.MoviePopulerModel
 import kotlinx.coroutines.CoroutineScope
@@ -17,6 +18,8 @@ class HomeViewModel : ViewModel() {
     val shouldShowMoviePopuler: MutableLiveData<List<MoviePopulerModel>> = MutableLiveData()
     val shouldShowListGenre: MutableLiveData<List<ListGenreModel>> = MutableLiveData()
     val shouldShowUsername: MutableLiveData<String> = MutableLiveData()
+    val shouldShowUser: MutableLiveData<UserModel> = MutableLiveData()
+    val shouldShowUserError: MutableLiveData<String> = MutableLiveData()
 
     fun onViewLoaded(db: MyDatabase) {
         this.db = db
@@ -28,7 +31,6 @@ class HomeViewModel : ViewModel() {
                 TMDBApiClient.instanceTMDB.getMoviePopuler("0fbaf8c27d542bc99bfc67fb877e3906")
             withContext(Dispatchers.IO) {
                 if (response.isSuccessful) {
-                    // transformasi atau mapping dari response ke model
                     val moviePopularResponse = response.body()
                     val moviePopularModels = moviePopularResponse?.results?.map {
                         MoviePopulerModel(
@@ -39,7 +41,6 @@ class HomeViewModel : ViewModel() {
                             overview = it.overview
                         )
                     } ?: listOf()
-                    // yang di parsing ke livedata
                     shouldShowMoviePopuler.postValue(moviePopularModels)
                 }
             }
@@ -52,7 +53,6 @@ class HomeViewModel : ViewModel() {
                 TMDBApiClient.instanceTMDB.getListGenre("0fbaf8c27d542bc99bfc67fb877e3906")
             withContext(Dispatchers.IO) {
                 if (response.isSuccessful) {
-                    // transformasi atau mapping dari response ke model
                     val listGenreResponse = response.body()
                     val listGenreModels = listGenreResponse?.genres?.map {
                         ListGenreModel(
@@ -60,7 +60,6 @@ class HomeViewModel : ViewModel() {
                             name = it.name
                         )
                     } ?: listOf()
-                    // yang di parsing ke livedata
                     shouldShowListGenre.postValue(listGenreModels)
                 }
             }
@@ -76,6 +75,27 @@ class HomeViewModel : ViewModel() {
                 shouldShowUsername.postValue("Welcome Anonymous \uD83D\uDC4B")
             }
 
+        }
+    }
+
+    fun getDataUser(email: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val user = db?.userDAO()?.getUsername(email = email)
+            withContext(Dispatchers.Main) {
+                if (user !== null) {
+                    shouldShowUser.postValue(
+                        UserModel(
+                            id = user.id,
+                            name = user.name,
+                            job = user.job,
+                            email = user.email,
+                            image = user.image
+                        )
+                    )
+                } else {
+                    shouldShowUserError.postValue("Anonymous")
+                }
+            }
         }
     }
 }
