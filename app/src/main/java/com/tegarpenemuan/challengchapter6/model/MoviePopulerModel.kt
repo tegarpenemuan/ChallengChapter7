@@ -1,4 +1,4 @@
-package com.tegarpenemuan.challengechapter5.model.movie
+package com.tegarpenemuan.challengchapter6.model
 
 data class MoviePopulerModel(
     val id: Int,

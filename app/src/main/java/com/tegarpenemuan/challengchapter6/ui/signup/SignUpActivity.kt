@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.github.drjacky.imagepicker.ImagePicker
@@ -77,14 +78,10 @@ class SignUpActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     progressDialog.hide()
-                    val snackbar =
-                        Snackbar.make(binding.root, "Register Berhasil", Snackbar.LENGTH_LONG)
-                    snackbar.view.setBackgroundColor(Color.BLUE)
-                    snackbar.setAction("OK") {
-                        startActivity(Intent(this@SignUpActivity,SignInActivity::class.java))
-                        finish()
-                    }
-                    snackbar.show()
+                    Toast.makeText(applicationContext, "Register Berhasil", Toast.LENGTH_SHORT)
+                        .show()
+                    startActivity(Intent(this@SignUpActivity, SignInActivity::class.java))
+                    finish()
                 } else {
                     progressDialog.hide()
                     val snackbar =

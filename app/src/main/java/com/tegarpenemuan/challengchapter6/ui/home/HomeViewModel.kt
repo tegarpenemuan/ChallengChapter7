@@ -6,7 +6,7 @@ import com.tegarpenemuan.challengchapter6.database.MyDatabase
 import com.tegarpenemuan.challengchapter6.model.ListGenreModel
 import com.tegarpenemuan.challengchapter6.model.UserModel
 import com.tegarpenemuan.challengchapter6.network.TMDBApiClient
-import com.tegarpenemuan.challengechapter5.model.movie.MoviePopulerModel
+import com.tegarpenemuan.challengchapter6.model.MoviePopulerModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

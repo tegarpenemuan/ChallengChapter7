@@ -4,13 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.tegarpenemuan.challengchapter6.data.local.MovieDAO
+import com.tegarpenemuan.challengchapter6.data.local.MovieEntity
 import com.tegarpenemuan.challengchapter6.data.local.UserDAO
 import com.tegarpenemuan.challengchapter6.data.local.UserEntity
 
-@Database(entities = [UserEntity::class], version = 1)
+@Database(entities = [UserEntity::class,MovieEntity::class], version = 2)
 abstract class MyDatabase : RoomDatabase() {
 
     abstract fun userDAO(): UserDAO
+    abstract fun movieDAO(): MovieDAO
 
     companion object {
         private const val DB_NAME = "My.db"

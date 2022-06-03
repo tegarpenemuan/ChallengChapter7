@@ -1,18 +1,19 @@
-package com.tegarpenemuan.challengchapter6.ui.home.adapter
+package com.tegarpenemuan.challengchapter6.ui.favorite.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.tegarpenemuan.challengchapter6.data.local.MovieEntity
 import com.tegarpenemuan.challengchapter6.databinding.ListItemMovieNowPlayingBinding
-import com.tegarpenemuan.challengchapter6.model.MoviePopulerModel
+import com.tegarpenemuan.challengchapter6.model.MovieModel
 
-class MovieNowPlayingAdapter(private val listener: EventListener, private var list: List<MoviePopulerModel>) :
-    RecyclerView.Adapter<MovieNowPlayingAdapter.ViewHolder>() {
+class MovieLocalAdapter(private val listener: EventListener, private var list: List<MovieEntity>) :
+    RecyclerView.Adapter<MovieLocalAdapter.ViewHolder>() {
     inner class ViewHolder(val binding: ListItemMovieNowPlayingBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    fun updateList(list: List<MoviePopulerModel>) {
+    fun updateList(list: List<MovieEntity>) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -30,12 +31,6 @@ class MovieNowPlayingAdapter(private val listener: EventListener, private var li
             .load(item.image)
             .into(holder.binding.ivPoster)
         holder.binding.tvTitleMovie.text = item.title
-
-        holder.binding.rating.rating = item.vote_average.toFloat()
-        holder.binding.rating.stepSize = (0.5).toFloat()
-        holder.binding.rating.max = 5
-        holder.binding.rating.numStars = 5
-
         holder.binding.tvOverview.text = item.overview
 
         holder.itemView.setOnClickListener {
@@ -48,6 +43,6 @@ class MovieNowPlayingAdapter(private val listener: EventListener, private var li
     }
 
     interface EventListener {
-        fun onClick(item: MoviePopulerModel)
+        fun onClick(item: MovieEntity)
     }
 }

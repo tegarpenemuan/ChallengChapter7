@@ -16,7 +16,8 @@ import com.tegarpenemuan.challengchapter6.ui.detail.DetailActivity
 import com.tegarpenemuan.challengchapter6.ui.home.adapter.ListGenreAdapter
 import com.tegarpenemuan.challengchapter6.ui.home.adapter.MovieNowPlayingAdapter
 import com.tegarpenemuan.challengchapter6.ui.home.adapter.MoviePopulerAdapter
-import com.tegarpenemuan.challengechapter5.model.movie.MoviePopulerModel
+import com.tegarpenemuan.challengchapter6.model.MoviePopulerModel
+
 
 class HomeFragment : Fragment() {
 
@@ -60,6 +61,7 @@ class HomeFragment : Fragment() {
             list = emptyList()
         )
         binding.rvMovieNowPlaying.adapter = movieNowPlayingAdapter
+
 
         listGenreAdapter = ListGenreAdapter(emptyList())
         binding.rvListGenre.adapter = listGenreAdapter

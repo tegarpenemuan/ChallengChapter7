@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/drawable-v24/favorite_toggle.xml" value="0.1275" />
+        <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/drawable-v24/ic_favorite_red.xml" value="0.1275" />
+        <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/drawable-v24/ic_favorite_white.xml" value="0.1275" />
         <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/drawable-v24/ic_login.xml" value="0.1195" />
         <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/drawable-v24/shape_button_blue_dark.xml" value="0.1195" />
-        <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/layout/activity_detail.xml" value="0.209375" />
+        <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/drawable/ic_favorite.xml" value="0.1275" />
+        <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/layout/activity_detail.xml" value="0.1935185185185185" />
         <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/layout/activity_main.xml" value="0.209375" />
         <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/layout/activity_profile.xml" value="0.209375" />
         <entry key="..\:/Project Challenge Binar Academy MBKM/app/src/main/res/layout/activity_sign_in.xml" value="0.209375" />

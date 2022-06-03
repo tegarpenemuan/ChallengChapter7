@@ -8,9 +8,9 @@ package com.tegarpenemuan.challengchapter6.model
  *
  */
 
-data class DetailModel(
-    val id: String,
-    val backdrop_path: String,
-    val overview: String,
-    val original_title: String,
+data class MovieModel (
+    val id: Int,
+    val title: String,
+    val overview: String?,
+    val image: String
 )

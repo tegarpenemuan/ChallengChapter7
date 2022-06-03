@@ -6,6 +6,8 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.snackbar.Snackbar
 import com.tegarpenemuan.challengchapter6.R
 import com.tegarpenemuan.challengchapter6.data.api.auth.SignInResponse
@@ -104,14 +106,9 @@ class SignInActivity : AppCompatActivity() {
             val user = db?.userDAO()?.insertUser(userEntity)
             withContext(Dispatchers.Main) {
                 if (user != 0L) {
-                    val snackbar =
-                        Snackbar.make(binding.root, "Login Berhasil", Snackbar.LENGTH_LONG)
-                    snackbar.view.setBackgroundColor(Color.BLUE)
-                    snackbar.setAction("OK") {
-                        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
-                        finish()
-                    }
-                    snackbar.show()
+                    Toast.makeText(applicationContext, "Login Berhasil",Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                    finish()
                 } else {
                     val snackbar =
                         Snackbar.make(binding.root, "Login Gagal", Snackbar.LENGTH_LONG)

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tegarpenemuan.challengchapter6.databinding.ListItemMoviePopulerBinding
-import com.tegarpenemuan.challengechapter5.model.movie.MoviePopulerModel
+import com.tegarpenemuan.challengchapter6.model.MoviePopulerModel
 
 class MoviePopulerAdapter(private val listener: EventListener, private var list: List<MoviePopulerModel>) :
     RecyclerView.Adapter<MoviePopulerAdapter.ViewHolder>() {
