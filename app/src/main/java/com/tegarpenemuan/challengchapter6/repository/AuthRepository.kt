@@ -1,11 +1,7 @@
 package com.tegarpenemuan.challengchapter6.repository
 
-import com.tegarpenemuan.challengchapter6.data.api.auth.AuthApi
-import com.tegarpenemuan.challengchapter6.data.api.auth.SignInRequest
-import com.tegarpenemuan.challengchapter6.data.api.auth.SignInResponse
-import com.tegarpenemuan.challengchapter6.data.api.auth.SignUpResponse
-import com.tegarpenemuan.challengchapter6.data.local.UserDAO
-import com.tegarpenemuan.challengchapter6.data.local.UserEntity
+import com.tegarpenemuan.challengchapter6.data.api.auth.*
+import com.tegarpenemuan.challengchapter6.data.local.user.UserEntity
 import com.tegarpenemuan.challengchapter6.database.MyDatabase
 import com.tegarpenemuan.challengchapter6.datastore.DataStoreManager
 import retrofit2.Response
@@ -23,6 +19,16 @@ class AuthRepository(
     private val api: AuthApi,
     private val db: MyDatabase,
 ) {
+
+    suspend fun signUpApi(request: SignUpRequest): Response<SignUpResponse> {
+        return api.register(
+            name = request.name,
+            email = request.email,
+            job = request.job,
+            password = request.password,
+            data = request.data
+        )
+    }
 
     suspend fun signIn(request: SignInRequest): Response<SignInResponse> {
         return api.login(request)
@@ -52,8 +58,12 @@ class AuthRepository(
         dataStoreManager.setPrefEmail(value)
     }
 
-    suspend fun insertUser(userEntity: UserEntity): Long {
+    fun insertUser(userEntity: UserEntity): Long {
         return db.userDAO().insertUser(userEntity)
+    }
+
+    fun getUsername(email: String): UserEntity? {
+        return db.userDAO().getUsername(email)
     }
 
 //    suspend fun signIn(request: SignInRequest): Response<SignInResponse> {

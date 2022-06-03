@@ -2,9 +2,8 @@ package com.tegarpenemuan.challengchapter6.ui.favorite
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tegarpenemuan.challengchapter6.data.local.MovieEntity
+import com.tegarpenemuan.challengchapter6.data.local.movie.MovieEntity
 import com.tegarpenemuan.challengchapter6.database.MyDatabase
-import com.tegarpenemuan.challengchapter6.model.MovieModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

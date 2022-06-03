@@ -10,6 +10,16 @@ interface AuthApi {
     @POST("login")
     suspend fun login(@Body request: SignInRequest): Response<SignInResponse>
 
+    @Multipart
+    @POST("register")
+    suspend fun register(
+        @Part("name") name: RequestBody? = null,
+        @Part("email") email: RequestBody? = null,
+        @Part("job") job: RequestBody? = null,
+        @Part("password") password: RequestBody? = null,
+        @Part data: MultipartBody.Part? = null
+    ): Response<SignUpResponse>
+
 //    @FormUrlEncoded
 //    @POST("login")
 //    fun login(
@@ -17,14 +27,16 @@ interface AuthApi {
 //        @Field("password") password: String
 //    ): Call<SignInResponse>
 
-    @Multipart
-    @POST("register")
-    fun registrasiUpload(
-        @Part("name") name: RequestBody,
-        @Part("email") email: RequestBody,
-        @Part("job") job: RequestBody,
-        @Part("password") password: RequestBody,
-        @Part data: MultipartBody.Part? = null
-    ): Call<SignUpResponse>
+//    @Multipart
+//    @POST("register")
+//    fun registrasiUpload(
+//        @Part("name") name: RequestBody,
+//        @Part("email") email: RequestBody,
+//        @Part("job") job: RequestBody,
+//        @Part("password") password: RequestBody,
+//        @Part data: MultipartBody.Part? = null
+//    ): Call<SignUpResponse>
+
+
 }
 

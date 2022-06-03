@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tegarpenemuan.challengchapter6.data.api.auth.SignInRequest
-import com.tegarpenemuan.challengchapter6.data.local.UserEntity
+import com.tegarpenemuan.challengchapter6.data.local.user.UserEntity
 import com.tegarpenemuan.challengchapter6.repository.AuthRepository
+import com.tegarpenemuan.challengchapter6.ui.signup.SignUpViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

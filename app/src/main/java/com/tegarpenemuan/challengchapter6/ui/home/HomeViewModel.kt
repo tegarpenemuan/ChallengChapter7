@@ -2,18 +2,23 @@ package com.tegarpenemuan.challengchapter6.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.tegarpenemuan.challengchapter6.database.MyDatabase
 import com.tegarpenemuan.challengchapter6.model.ListGenreModel
 import com.tegarpenemuan.challengchapter6.model.UserModel
-import com.tegarpenemuan.challengchapter6.network.TMDBApiClient
 import com.tegarpenemuan.challengchapter6.model.MoviePopulerModel
+import com.tegarpenemuan.challengchapter6.repository.AuthRepository
+import com.tegarpenemuan.challengchapter6.repository.MovieRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel : ViewModel() {
-    private var db: MyDatabase? = null
+class HomeViewModel(
+    private val movieRepository: MovieRepository,
+    private val authRepository: AuthRepository
+) : ViewModel() {
+//    private var db: MyDatabase? = null
 
     val shouldShowMoviePopuler: MutableLiveData<List<MoviePopulerModel>> = MutableLiveData()
     val shouldShowListGenre: MutableLiveData<List<ListGenreModel>> = MutableLiveData()
@@ -21,14 +26,13 @@ class HomeViewModel : ViewModel() {
     val shouldShowUser: MutableLiveData<UserModel> = MutableLiveData()
     val shouldShowUserError: MutableLiveData<String> = MutableLiveData()
 
-    fun onViewLoaded(db: MyDatabase) {
-        this.db = db
-    }
+//    fun onViewLoaded(db: MyDatabase) {
+//        this.db = db
+//    }
 
     fun getMoviePopuler() {
         CoroutineScope(Dispatchers.IO).launch {
-            val response =
-                TMDBApiClient.instanceTMDB.getMoviePopuler("0fbaf8c27d542bc99bfc67fb877e3906")
+            val response = movieRepository.getMoviePopuler("0fbaf8c27d542bc99bfc67fb877e3906")
             withContext(Dispatchers.IO) {
                 if (response.isSuccessful) {
                     val moviePopularResponse = response.body()
@@ -49,8 +53,7 @@ class HomeViewModel : ViewModel() {
 
     fun getListMovie() {
         CoroutineScope(Dispatchers.IO).launch {
-            val response =
-                TMDBApiClient.instanceTMDB.getListGenre("0fbaf8c27d542bc99bfc67fb877e3906")
+            val response = movieRepository.getListGenre("0fbaf8c27d542bc99bfc67fb877e3906")
             withContext(Dispatchers.IO) {
                 if (response.isSuccessful) {
                     val listGenreResponse = response.body()
@@ -66,21 +69,9 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun getUser() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val user = db?.userDAO()?.getUsername("tegarpenemuan@gmail.com")
-            user?.let {
-                shouldShowUsername.postValue("Welcome ${it.name} \uD83D\uDC4B")
-            } ?: run {
-                shouldShowUsername.postValue("Welcome Anonymous \uD83D\uDC4B")
-            }
-
-        }
-    }
-
     fun getDataUser(email: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val user = db?.userDAO()?.getUsername(email = email)
+            val user = authRepository.getUsername(email = email)
             withContext(Dispatchers.Main) {
                 if (user !== null) {
                     shouldShowUser.postValue(
@@ -96,6 +87,19 @@ class HomeViewModel : ViewModel() {
                     shouldShowUserError.postValue("Anonymous")
                 }
             }
+        }
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    class Factory(
+        private val movieRepository: MovieRepository,
+        private val authRepository: AuthRepository,
+    ) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+                return HomeViewModel(movieRepository,authRepository) as T
+            }
+            throw IllegalArgumentException("Unknown class name")
         }
     }
 }

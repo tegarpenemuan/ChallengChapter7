@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.tegarpenemuan.challengchapter6.data.local.MovieEntity
+import com.tegarpenemuan.challengchapter6.data.local.movie.MovieEntity
 import com.tegarpenemuan.challengchapter6.database.MyDatabase
 import com.tegarpenemuan.challengchapter6.databinding.FragmentFavoriteBinding
 import com.tegarpenemuan.challengchapter6.ui.detail.DetailActivity

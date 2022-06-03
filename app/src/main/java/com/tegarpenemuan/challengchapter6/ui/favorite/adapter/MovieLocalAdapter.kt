@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.tegarpenemuan.challengchapter6.data.local.MovieEntity
+import com.tegarpenemuan.challengchapter6.data.local.movie.MovieEntity
 import com.tegarpenemuan.challengchapter6.databinding.ListItemMovieNowPlayingBinding
-import com.tegarpenemuan.challengchapter6.model.MovieModel
 
 class MovieLocalAdapter(private val listener: EventListener, private var list: List<MovieEntity>) :
     RecyclerView.Adapter<MovieLocalAdapter.ViewHolder>() {

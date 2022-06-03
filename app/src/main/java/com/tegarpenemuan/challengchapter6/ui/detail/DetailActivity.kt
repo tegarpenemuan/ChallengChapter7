@@ -5,12 +5,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.tegarpenemuan.challengchapter6.data.local.MovieEntity
+import com.tegarpenemuan.challengchapter6.data.local.movie.MovieEntity
 import com.tegarpenemuan.challengchapter6.database.MyDatabase
 import com.tegarpenemuan.challengchapter6.databinding.ActivityDetailBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 

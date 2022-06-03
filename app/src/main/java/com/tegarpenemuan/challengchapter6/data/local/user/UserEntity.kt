@@ -1,4 +1,4 @@
-package com.tegarpenemuan.challengchapter6.data.local
+package com.tegarpenemuan.challengchapter6.data.local.user
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
