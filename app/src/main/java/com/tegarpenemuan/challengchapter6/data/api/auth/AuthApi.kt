@@ -7,15 +7,15 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface AuthApi {
-    //    @POST("login")
-//    suspend fun login(@Body request: SignInRequest): Response<SignInResponse>
-
-    @FormUrlEncoded
     @POST("login")
-    fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): Call<SignInResponse>
+    suspend fun login(@Body request: SignInRequest): Response<SignInResponse>
+
+//    @FormUrlEncoded
+//    @POST("login")
+//    fun login(
+//        @Field("email") email: String,
+//        @Field("password") password: String
+//    ): Call<SignInResponse>
 
     @Multipart
     @POST("register")
