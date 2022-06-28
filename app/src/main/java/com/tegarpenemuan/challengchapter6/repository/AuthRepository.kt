@@ -34,6 +34,22 @@ class AuthRepository(
         return api.login(request)
     }
 
+    suspend fun updateProfile(id: String,request: UpdateProfileRequest): Response<UpdateProfileResponse> {
+        return api.updateProfile(
+            id = id,
+            name = request.name,
+            job = request.job,
+            data = request.data
+        )
+    }
+
+    suspend fun gantiPassword(id: String,request: GantiPasswordRequest): Response<GantiPasswordResponse> {
+        return api.gantiPassword(
+            id = id,
+            request = request
+        )
+    }
+
     //    suspend fun setUsername(value: String) {
 //        dataStoreManager.setPrefUsername(value)
 //    }
@@ -52,6 +68,10 @@ class AuthRepository(
 //
     fun setPrefLogin(value: Boolean) {
         dataStoreManager.setPrefLogin(value)
+    }
+
+    fun setPrefId(value: String) {
+        dataStoreManager.setPrefId(value)
     }
 
     fun setPrefEmail(value: String) {

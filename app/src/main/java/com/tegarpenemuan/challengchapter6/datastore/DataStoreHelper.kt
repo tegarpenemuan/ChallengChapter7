@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
@@ -30,6 +31,7 @@ class DataStoreManager(
             listOf(SharedPreferencesMigration(context, PREFS_SETTINGS))
 
         private val PREF_IS_LOGIN = booleanPreferencesKey("PREF_IS_LOGIN")
+        private val PREF_ID = stringPreferencesKey("PREF_ID")
         private val PREF_USERNAME = stringPreferencesKey("PREF_USERNAME")
         private val PREF_PASSWORD = stringPreferencesKey("PREF_PASSWORD")
         private val PREF_EMAIL = stringPreferencesKey("PREF_EMAIL")
@@ -38,6 +40,12 @@ class DataStoreManager(
     fun setPrefLogin(value: Boolean) {
         CoroutineScope(Dispatchers.IO).launch {
             context.dataStore.setValue(PREF_IS_LOGIN, value)
+        }
+    }
+
+    fun setPrefId(value: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            context.dataStore.setValue(PREF_ID, value)
         }
     }
 
@@ -62,6 +70,7 @@ class DataStoreManager(
     fun getPrefLogin() = runBlocking { context.dataStore.getValue(PREF_IS_LOGIN, false).firstOrNull() }
     fun getPrefUsername() = runBlocking { context.dataStore.getValue(PREF_USERNAME, "").firstOrNull() }
     fun getPrefEmail() = runBlocking { context.dataStore.getValue(PREF_EMAIL, "").firstOrNull() }
+    fun getPrefId() = runBlocking { context.dataStore.getValue(PREF_ID, "").firstOrNull() }
     fun getPrefPassword() = runBlocking { context.dataStore.getValue(PREF_PASSWORD, "").firstOrNull() }
 
     fun clearPref() = runBlocking { context.dataStore.clear() }

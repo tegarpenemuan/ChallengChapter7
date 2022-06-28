@@ -66,6 +66,7 @@ class SignInViewModel(
 
                         authRepository.setPrefLogin(true)
                         authRepository.setPrefEmail(response.body()!!.user.email)
+                        authRepository.setPrefId(response.body()!!.user.id.toString())
 
                         insertToLocal(
                             UserEntity(

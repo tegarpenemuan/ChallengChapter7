@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.tegarpenemuan.challengchapter6.Constant
 import com.tegarpenemuan.challengchapter6.common.GetInisial.getInitial
 import com.tegarpenemuan.challengchapter6.database.MyDatabase
 import com.tegarpenemuan.challengchapter6.databinding.FragmentHomeBinding
@@ -115,7 +116,7 @@ class HomeFragment : Fragment() {
                 binding.tvInisial.text = it.name.getInitial()
             } else {
                 Glide.with(requireContext())
-                    .load("https://tegarpenemuan.xyz/storage/user/" + it.image)
+                    .load(Constant.ImageUrl.IMAGE_URL + it.image)
                     .into(binding.ivProfile)
             }
         }

@@ -20,23 +20,19 @@ interface AuthApi {
         @Part data: MultipartBody.Part? = null
     ): Response<SignUpResponse>
 
-//    @FormUrlEncoded
-//    @POST("login")
-//    fun login(
-//        @Field("email") email: String,
-//        @Field("password") password: String
-//    ): Call<SignInResponse>
+    @Multipart
+    @POST("update_profile/{id}")
+    suspend fun updateProfile(
+        @Path("id") id: String,
+        @Part("name") name: RequestBody? = null,
+        @Part("job") job: RequestBody? = null,
+        @Part data: MultipartBody.Part? = null
+    ): Response<UpdateProfileResponse>
 
-//    @Multipart
-//    @POST("register")
-//    fun registrasiUpload(
-//        @Part("name") name: RequestBody,
-//        @Part("email") email: RequestBody,
-//        @Part("job") job: RequestBody,
-//        @Part("password") password: RequestBody,
-//        @Part data: MultipartBody.Part? = null
-//    ): Call<SignUpResponse>
-
-
+    @POST("ganti_password/{id}")
+    suspend fun gantiPassword(
+        @Path("id") id: String,
+        @Body request: GantiPasswordRequest
+    ): Response<GantiPasswordResponse>
 }
 

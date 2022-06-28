@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object AuthApiClient {
-    private const val BASE_URL = "https://tegarpenemuan.xyz/api/"
+    private const val BASE_URL = "https://tegarpenemuan.000webhostapp.com/api/"
 
     val instance: AuthApi by lazy {
         val retrofit = Retrofit.Builder()
